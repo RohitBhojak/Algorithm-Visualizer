@@ -17,7 +17,7 @@ body {
 
 /* left side */
 .left {
-    flex: .3;
+    width: 30%;
     background-color: whitesmoke;
 }
 
@@ -25,18 +25,21 @@ select {
     width: 100%;
     font-size: 24px;
     text-align: center;
+    height: 10%;
 }
 
 /* Style the tab */
 .tab {
     overflow: hidden;
+    display: flex;
 }
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
     background-color: #f1f1f1;
-    float: left;
+    font-size: 18px;
     border: none;
+    width: 50%;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
@@ -79,7 +82,7 @@ select {
 
 /* right side */
 .right {
-    flex: .7;
+    width: 70%;
     display: flex;
     flex-direction: column;
 }
