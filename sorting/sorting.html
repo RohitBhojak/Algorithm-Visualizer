@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./sorting.css">
+    <title>Sorting Visualizer</title>
+</head>
+<body>
+
+    <div class="left">
+        <select name="algorithm" id="algorithm">
+            <option value="bubble">Bubble Sort</option>
+            <option value="insertion">Insertion Sort</option>
+            <option value="selection">Selection Sort</option>
+            <option value="merge">Merge Sort</option>
+            <option value="quick">Quick Sort</option>
+            <option value="heap">Heap Sort</option>
+        </select>
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'pseudocode')">Pseudocode</button>
+            <button class="tablinks" onclick="openTab(event, 'complexities')">Complexities</button>
+            <div id="pseudocode" class="tabcontent">
+            </div>
+            <div id="complexities" class="tabcontent">
+            </div>
+        </div>
+    </div>
+    <div class="right">
+
+        <div class="controls">
+            <div class="usr-input">
+                <label for="size">Size</label>
+                <input type="range" name="size" id="size" min="10" max="100" value="50">
+            </div>
+
+            <div class="usr-input">
+                <label for="speed">Speed</label>
+                <input type="range" name="speed" id="speed" min="1" max="10" value="5">
+            </div>
+            <button id="generate">Randomize</button>
+            <button id="sort">Sort</button>
+        </div>
+
+        <div class="canvas"></div>
+    </div>
+</body>
+</html>
