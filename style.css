@@ -22,5 +22,20 @@ body {
 
 .card-container {
     display: flex;
-    justify-content: space-around;
+    gap: 100px;
+    justify-content: center;
+}
+
+.footer {
+    margin-top: auto;
+    display: flex;
+}
+
+.github {
+    height: 0px;
+    width: 50px;
+}
+
+.team {
+    display: flex;
 }
