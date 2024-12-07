@@ -1,0 +1,7 @@
+.canvas {
+    height: 70%;
+    width: 80%;
+    background-color: whitesmoke;
+    margin: auto;
+    display: flex;
+}

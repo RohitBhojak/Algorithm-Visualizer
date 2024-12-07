@@ -76,6 +76,7 @@ select {
     }
 }
 
+
 /* right side */
 .right {
     flex: .7;
@@ -101,11 +102,4 @@ select {
 button {
     height: 70%;
     width: 100px;
-}
-
-.canvas {
-    height: 70%;
-    width: 80%;
-    background-color: #ccc;
-    margin: auto;
 }
