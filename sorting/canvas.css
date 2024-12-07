@@ -1,6 +1,10 @@
+* {
+    box-sizing: border-box;
+}
+
 .canvas {
     height: 70%;
-    width: 80%;
+    width: 90%;
     background-color: whitesmoke;
     margin: auto;
     display: flex;
@@ -8,7 +12,10 @@
 
 .bar {
     width: 10%;
-    background-color: black;
+    background-color: rgb(0, 217, 255);
     align-self: flex-end;
     margin: 1px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }

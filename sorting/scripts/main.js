@@ -24,6 +24,7 @@ function generateArr(size) {
         bar_height.push(Math.floor(Math.random() * 95) + 5);
         bar[i] = document.createElement("div");
         bar[i].style.height = `${bar_height[i]}%`;
+        bar[i].textContent = bar_height[i];
         bar[i].classList.add("bar");
         canvas.appendChild(bar[i]);
     }
