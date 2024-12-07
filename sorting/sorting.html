@@ -18,11 +18,15 @@
             <option value="heap">Heap Sort</option>
         </select>
         <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'pseudocode')">Pseudocode</button>
-            <button class="tablinks" onclick="openTab(event, 'complexities')">Complexities</button>
-            <div id="pseudocode" class="tabcontent">
+            <div class="tab-buttons">
+                <button class="tablinks" onclick="openTab(event, 'pseudocode')">Pseudocode</button>
+                <button class="tablinks" onclick="openTab(event, 'complexities')">Complexities</button>
             </div>
-            <div id="complexities" class="tabcontent">
+            <div class="content">
+                <div id="pseudocode" class="tabcontent">
+                </div>
+                <div id="complexities" class="tabcontent">
+                </div>
             </div>
         </div>
     </div>
@@ -46,6 +50,7 @@
     </div>
 
     <script src="./scripts/main.js"></script>
+    <script src="./scripts/tab-script.js"></script>
     <script src="./scripts/visualize.js"></script>
     <script src="./scripts/bubble.js"></script>
     <script src="./scripts/insertion.js"></script>

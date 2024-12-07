@@ -1,43 +1,74 @@
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
     text-decoration: none;
     box-sizing: border-box;
+    line-height: 1.5;
 }
 
+/* Root Variables */
+:root {
+    --bg-color: #f1f1f1;
+    --text-color: #000;
+    --button-bg: #ddd;
+    --button-hover: #ccc;
+    --canvas-bg: whitesmoke;
+    --bar-color: rgb(0, 217, 255);
+    --disabled-opacity: 0.5;
+}
+
+/* Body Styling */
 body {
     display: flex;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
 }
 
+/* Left and Right Sections */
 .left,
 .right {
     height: 100vh;
 }
 
-
-/* left side */
 .left {
     width: 30%;
+    border-right: 2px solid #ccc;
 }
 
+.right {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Select Dropdown */
 select {
     width: 100%;
     font-size: 24px;
     text-align: center;
     height: 10%;
+    border: 1px solid #bbb;
+    border-radius: 5px;
 }
 
-/* Style the tab */
+/* Tabs Styling */
 .tab {
     overflow: hidden;
     display: flex;
+    flex-direction: column;
 }
 
-/* Style the buttons that are used to open the tab content */
+.tab-buttons {
+    display: flex;
+}
+
 .tab button {
-    background-color: #f1f1f1;
+    background-color: #e0e0e0;
     font-size: 18px;
-    border: none;
+    border: 1px solid #bbb;
+    border-radius: 5px 5px 0 0;
     width: 50%;
     outline: none;
     cursor: pointer;
@@ -45,29 +76,31 @@ select {
     transition: 0.3s;
 }
 
-/* Change background color of buttons on hover */
 .tab button:hover {
-    background-color: #ddd;
+    background-color: var(--button-hover);
 }
 
-/* Create an active tablink class */
 .tab button.active {
-    background-color: #ccc;
+    background-color: var(--button-bg);
 }
 
-/* Style the tab content */
+/* Tab Content Styling */
 .tabcontent {
     display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
+    padding: 6px 0px;
+    border: 1px solid #bbb;
     border-top: none;
-}
-
-.tabcontent {
+    border-radius: 0 5px 5px 5px;
     animation: fadeEffect 1s;
+    font-size: 16px;
 }
 
-/* Animate */
+/* wrap text to fix quicksort pseudocode overflow */
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
 @keyframes fadeEffect {
     from {
         opacity: 0;
@@ -78,14 +111,7 @@ select {
     }
 }
 
-
-/* right side */
-.right {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-}
-
+/* Controls Section */
 .controls {
     display: flex;
     font-size: 24px;
@@ -101,33 +127,79 @@ select {
     flex-direction: column;
 }
 
+.usr-input label {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.usr-input input {
+    cursor: pointer;
+    accent-color: var(--bar-color);
+}
+
 button {
     height: 70%;
     width: 100px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Canvas styling */
+button:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.05);
+}
 
+button:active {
+    transform: scale(0.95);
+}
+
+/* Canvas Styling */
 .canvas {
-    height: 70%;
+    height: 80vh;
     width: 90%;
-    background-color: whitesmoke;
+    background-color: var(--canvas-bg);
     margin: auto;
     display: flex;
+    align-items: flex-end;
+    gap: 2px;
 }
 
 .bar {
-    width: 10%;
-    background-color: rgb(0, 217, 255);
-    align-self: flex-end;
-    margin: 1px;
+    flex: 1;
+    background-color: var(--bar-color);
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    transition: height 0.3s, background-color 0.1s;
 }
 
-/* disabled inputs */
+.bar:hover {
+    background-color: #ffa500;
+    cursor: pointer;
+}
+
+/* Bar State Colors */
+.bar.sorted {
+    background-color: #4caf50;
+    /* Green */
+}
+
+.bar.swapping {
+    background-color: #f44336;
+    /* Red */
+}
+
+.bar.comparing {
+    background-color: #ffeb3b;
+    /* Yellow */
+}
+
+/* Disabled Inputs */
 .disabled {
-    opacity: 0.5;
+    opacity: var(--disabled-opacity);
     cursor: not-allowed;
 }
