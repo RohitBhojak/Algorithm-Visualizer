@@ -5,3 +5,10 @@
     margin: auto;
     display: flex;
 }
+
+.bar {
+    width: 10%;
+    background-color: black;
+    align-self: flex-end;
+    margin: 1px;
+}
