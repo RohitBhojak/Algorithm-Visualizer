@@ -9,14 +9,24 @@ const generateButton = document.querySelector("#generate");
 const algorithm = document.querySelector("#algorithm");
 
 // event listeners
-inputSize.addEventListener("input", generateArr(inputSize.value));
+document.addEventListener("DOMContentLoaded", () => {
+    generateArr(inputSize.value);
+})
 
-generateButton.addEventListener("click", generateArr(inputSize.value));
+inputSize.addEventListener("input", () => {
+    bar = [];
+    bar_height = [];
+    generateArr(inputSize.value);
+})
+
+generateButton.addEventListener("click", () => {
+    bar = [];
+    bar_height = [];
+    generateArr(inputSize.value);
+})
 
 // functions
 function generateArr(size) {
-    bar = [];
-    bar_height = [];
     canvas.innerHTML = "";
     for (let i = 0; i < size; i++) {
         bar_height.push(Math.floor(Math.random() * 95) + 5);
