@@ -68,6 +68,7 @@ function addOperation(operation) {
 function renderFrame() {
     if (currentFrame < operationsQueue.length && isPlaying) {
         const operation = operationsQueue[currentFrame];
+        console.log(operation);
         processOperation(operation);
         currentFrame++;
 

@@ -14,37 +14,44 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 inputSize.addEventListener("input", () => {
-    bar = [];
-    bar_height = [];
     generateArr(inputSize.value);
 })
 
 generateButton.addEventListener("click", () => {
-    bar = [];
-    bar_height = [];
     generateArr(inputSize.value);
 })
 
 // functions
 function generateArr(size) {
-    canvas.innerHTML = "";
+    canvas.innerHTML = "";  // Clear canvas
     resetAnimation();
-    for (let i = 0; i < size; i++) {
-        bar_height.push(Math.floor(Math.random() * 95) + 5);
-        bar[i] = document.createElement("div");
-        bar[i].style.height = `${bar_height[i]}%`;
-        bar[i].textContent = bar_height[i];
-        bar[i].classList.add("bar");
-        canvas.appendChild(bar[i]);
 
-        // add smooth animation
-        bar[i].style.transition = "all .5s ease-in-out";
-        bar[i].style.height = "0%";
-        setTimeout(() => {
-            bar[i].style.height = `${bar_height[i]}%`;
-        }, 50);
+    bar = [];  // Reset bar array
+    bar_height = [];  // Reset height array
+
+    for (let i = 0; i < size; i++) {
+        const height = Math.floor(Math.random() * 95) + 5;
+        bar_height.push(height);
+
+        const newBar = document.createElement("div");
+        newBar.style.height = "0%"; // Initial height
+        newBar.textContent = height;
+        newBar.classList.add("bar");
+        canvas.appendChild(newBar);
+
+        newBar.style.transition = "all .5s ease-in-out";
+
+        // Use requestAnimationFrame for better animation timing
+        requestAnimationFrame(() => {
+            newBar.style.height = `${height}%`;
+        });
+
+        // Store the bar element
+        bar.push(newBar);
+        console.log(bar[i]);
     }
 }
+
 
 // disable inputs while algorithm is running
 function disable() {
