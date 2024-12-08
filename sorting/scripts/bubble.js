@@ -1,8 +1,8 @@
 function bubbleSort() {
-    c_delay = 0;
+    const n = bar_height.length; // Use bar_height.length instead of inputSize.value
 
-    for (let i = 0; i < inputSize.value - 1; i++) {
-        for (let j = 0; j < inputSize.value - i - 1; j++) {
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
             // Enqueue comparison operation
             addOperation({
                 type: "compare",
@@ -10,40 +10,46 @@ function bubbleSort() {
             });
 
             if (bar_height[j] > bar_height[j + 1]) {
+                // Swap the elements in the array
+                const temp = bar_height[j];
+                bar_height[j] = bar_height[j + 1];
+                bar_height[j + 1] = temp;
+
                 // Enqueue swap operation
                 addOperation({
                     type: "swap",
-                    indices: [j, j + 1]
-                });
-
-                // Enqueue update operation (optional, to change colors back)
-                addOperation({
-                    type: "update",
                     indices: [j, j + 1],
-                    color: "blue"
-                });
-            } else {
-                // Enqueue update operation (no swap, reset colors)
-                addOperation({
-                    type: "update",
-                    indices: [j, j + 1],
-                    color: "blue"
                 });
             }
+
+            // Reset the colors to default after comparison
+            addOperation({
+                type: "update",
+                indices: [j],
+                color: "blue",
+            });
+            addOperation({
+                type: "update",
+                indices: [j + 1],
+                color: "blue",
+            });
         }
-        // Enqueue final color update for sorted element
+
+        // Mark the last sorted element
         addOperation({
             type: "update",
-            indices: [inputSize.value - i - 1],
-            color: "green"
+            indices: [n - i - 1],
+            color: "green",
         });
     }
-    // Enqueue update for the first element
+
+    // Mark the first element as sorted
     addOperation({
         type: "update",
         indices: [0],
-        color: "green"
+        color: "green",
     });
 
-    startAnimation(); // Start the rendering process
+    // Start the rendering process
+    startAnimation();
 }

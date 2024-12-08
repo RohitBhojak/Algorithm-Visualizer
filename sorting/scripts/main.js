@@ -4,9 +4,9 @@ let bar = [];
 let bar_height = [];
 
 const inputSize = document.querySelector("#size");
-const inputSpeed = document.querySelector("#speed");
 const generateButton = document.querySelector("#generate");
 const algorithm = document.querySelector("#algorithm");
+const inputSpeed = document.querySelector("#speed");
 
 // event listeners
 document.addEventListener("DOMContentLoaded", () => {
