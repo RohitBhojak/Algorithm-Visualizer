@@ -1,41 +1,195 @@
+/* Resetting Default Styles */
 * {
     margin: 0;
     padding: 0;
     text-decoration: none;
     text-align: center;
-    box-sizing: border-box;
 }
 
+/* Body and Main Layout */
 body {
     height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
+#main {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Container Styles */
 .container {
-    margin-top: 30vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
+/* Logo Styles */
 .logo {
-    margin-bottom: 10vh;
+    margin-top: 125px;
+    margin-bottom: 25px;
+    font-size: xx-large;
 }
 
+/* Description Styles */
+.description {
+    width: 50vw;
+    margin: 2px auto;
+    color: white;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+/* Card Container Styles */
 .card-container {
     display: flex;
-    gap: 100px;
     justify-content: center;
 }
 
-.footer {
-    margin-top: auto;
+/* Individual Card Styles */
+.card {
     display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Image Styles */
+.image {
+    height: 150px;
+    width: 150px;
+    border-radius: 10%;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effects for Image */
+.image:hover {
+    border-radius: 50%; /* Fully round on hover */
+    transform: scale(1.1); /* Slight scale effect */
+}
+
+/* Caption Styles */
+.caption {
+    color: white;
+    margin-top: 5px; /* Reduced space between image and caption */
+    transition: color 0.3s ease;
+}
+
+/* Change caption color on card hover */
+.card:hover .caption {
+    color: #ff9800;
+}
+
+/* Footer Styles */
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; /* Align vertically */
+    margin-top: auto;
+}
+
+/* GitHub Icon Styles */
 .github {
-    height: 0px;
-    width: 50px;
+    height: 30px;
+    width: 30px;
+    color: white;
+    transition: transform 0.3s ease;
+    margin-left: 20px;
 }
 
+/* Hover effect for GitHub icon */
+.github:hover {
+    transform: scale(1.2); /* Slight scale on hover */
+}
+
+/* Team Section Styles */
 .team {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; /* Align vertically */
+}
+
+/* Media Query for Smaller Screens (max-width: 480px) */
+@media (max-width: 480px) {
+
+    /* Main Container Layout for Small Screens */
+    #main {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    /* Logo Styles for Small Screens */
+    .logo {
+        font-size: 24px;
+        margin: 10vh auto 10px;
+    }
+
+    /* Description Styles for Small Screens */
+    .description {
+        width: 80vw;
+        font-size: 14px;
+        gap: 20px;
+    }
+
+    /* Card Container Layout for Small Screens */
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    /* Card Layout Adjustments for Small Screens */
+    .card {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Image Adjustments for Small Screens */
+    .image {
+        height: 120px;
+        width: 120px;
+        margin-bottom: 10px;
+    }
+
+    /* Caption Styles for Small Screens */
+    .caption {
+        font-size: 14px;
+    }
+
+    /* Footer Layout for Small Screens */
+    .footer {
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px 10px;
+        font-size: 14px;
+        background: none;
+    }
+
+    /* GitHub Icon Styles for Small Screens */
+    .github {
+        margin-left: 0;
+        margin-top: 10px;
+        height: 25px;
+        width: 25px;
+        color: black;
+    }
+
+    /* Team Layout for Small Screens */
+    .team {
+        flex-direction: column;
+        align-items: center;
+    }
 }
