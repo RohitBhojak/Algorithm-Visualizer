@@ -118,10 +118,15 @@ select:focus {
     background-color: #f9f9f9;
 }
 
-/* wrap text to fix quicksort pseudocode overflow */
+/* wrap text to fix pseudocode overflow */
 pre {
     white-space: pre-wrap;
     word-wrap: break-word;
+}
+
+/* Adding padding to complexity list */
+ul {
+    padding: 0px 24px;
 }
 
 /* Improved Keyframe */
@@ -218,10 +223,10 @@ button:active {
 }
 
 /* Accessibility Focus Styling */
-button:focus {
+/* button:focus {
     outline: 2px solid var(--bar-color);
     outline-offset: 2px;
-}
+} */
 
 select:focus,
 input:focus {

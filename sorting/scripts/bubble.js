@@ -42,13 +42,6 @@ function bubbleSort() {
         // If no swaps occurred, break early (array is sorted)
         if (!swapped) break;
     }
-
-    // Mark the first element as sorted (green)
-    addOperation({
-        type: "update",
-        indices: [0],
-        color: "green"
-    });
     
     // Start animation after all operations are queued
     startAnimation();

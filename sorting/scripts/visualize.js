@@ -100,9 +100,8 @@ function resetAnimation() {
 }
 
 function completeAnimation() {
-    // Change bars to indicate completion (e.g., turn them green)
+    // Color bars green to indicate completion
     bar.forEach(b => b.style.backgroundColor = "green");
-    document.querySelector("#sort").innerText = "Finished";
     resetAnimation();
 }
 
