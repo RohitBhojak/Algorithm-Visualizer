@@ -1,14 +1,80 @@
 function selectionSort() {
-    const size = document.querySelector("#size");
-    for (let i = 0; i < size - 1; i++) {
+    const n = bar_height.length; 
+    let copy = [...bar_height]; // Create a copy of bar_height for sorting
+
+    for (let i = 0; i < n - 1; i++) {
         let minIndex = i;
-        for (let j = i + 1; j < size; j++) {
-            if (arr[j] < bar_height[minIndex]) {
+
+        // Enqueue update operation to mark the starting element as the current minimum
+        addOperation({
+            type: "update",
+            indices: [minIndex],
+            color: "orange" // Highlight the current minimum
+        });
+
+        for (let j = i + 1; j < n; j++) {
+            // Enqueue comparison operation
+            addOperation({
+                type: "compare",
+                indices: [j, minIndex]
+            });
+
+            if (copy[j] < copy[minIndex]) {
+                // Reset previous minimum color
+                addOperation({
+                    type: "update",
+                    indices: [minIndex]
+                });
+
                 minIndex = j;
+
+                // Mark the new minimum
+                addOperation({
+                    type: "update",
+                    indices: [minIndex],
+                    color: "orange"
+                });
             }
+
+            // Reset color for the compared element
+            addOperation({
+                type: "update",
+                indices: [j]
+            });
         }
+
         if (minIndex !== i) {
-            [bar_height[i], bar_height[minIndex]] = [bar_height[minIndex], bar_height[i]];
+            // Enqueue swap operation
+            addOperation({
+                type: "swap",
+                indices: [i, minIndex]
+            });
+
+            [copy[i], copy[minIndex]] = [copy[minIndex], copy[i]];
+        } else {
+            // Reset color for the swapped element
+            addOperation({
+                type: "update",
+                indices: [minIndex]
+            })
         }
+
+        // Mark the sorted position as green
+        addOperation({
+            type: "update",
+            indices: [i],
+            color: "green"
+        });
+
     }
+
+    // Mark the last element as sorted (green)
+    addOperation({
+        type: "update",
+        indices: [n - 1],
+        color: "green"
+    });
+
+    // Start animation after all operations are queued
+    startAnimation();
 }
