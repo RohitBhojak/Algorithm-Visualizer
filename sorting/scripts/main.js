@@ -8,64 +8,73 @@ const generateButton = document.querySelector("#generate");
 const algorithm = document.querySelector("#algorithm");
 const inputSpeed = document.querySelector("#speed");
 
-// event listeners
+// Generate array on page load
 document.addEventListener("DOMContentLoaded", () => {
     generateArr(inputSize.value);
 })
 
+// Generate array on size change
 inputSize.addEventListener("input", () => {
-    bar = [];
-    bar_height = [];
     generateArr(inputSize.value);
 })
 
+// Generate array on generate button click
 generateButton.addEventListener("click", () => {
-    bar = [];
-    bar_height = [];
     generateArr(inputSize.value);
 })
 
 // functions
 function generateArr(size) {
-    canvas.innerHTML = "";
-    for (let i = 0; i < size; i++) {
-        bar_height.push(Math.floor(Math.random() * 95) + 5);
-        bar[i] = document.createElement("div");
-        bar[i].style.height = `${bar_height[i]}%`;
-        bar[i].textContent = bar_height[i];
-        bar[i].classList.add("bar");
-        canvas.appendChild(bar[i]);
+    canvas.innerHTML = "";  // Clear canvas
+    resetAnimation();
 
-        // add smooth animation
-        bar[i].style.transition = "all .5s ease-in-out";
-        bar[i].style.height = "0%";
-        setTimeout(() => {
-            bar[i].style.height = `${bar_height[i]}%`;
-        }, 50);
+    bar = [];  // Reset bar array
+    bar_height = [];  // Reset height array
+
+    for (let i = 0; i < size; i++) {
+        const height = Math.floor(Math.random() * 95) + 5;
+        bar_height.push(height);
+
+        const newBar = document.createElement("div");
+        newBar.style.height = "0%"; // Initial height
+        newBar.textContent = height;
+        newBar.classList.add("bar");
+        canvas.appendChild(newBar);
+
+        newBar.style.transition = "all .5s ease-in-out";
+
+        // requestAnimationFrame for better animation timing
+        requestAnimationFrame(() => {
+            newBar.style.height = `${height}%`;
+        });
+
+        // Store the bar element
+        bar.push(newBar);
     }
 }
+
 
 // disable inputs while algorithm is running
 function disable() {
     inputSize.disabled = true;
-    inputSize.classList.toggle("disabled");
+    inputSize.classList.add("disabled");
 
     generateButton.disabled = true;
-    generateButton.classList.toggle("disabled");
+    generateButton.classList.add("disabled");
 
     algorithm.disabled = true;
-    algorithm.classList.toggle("disabled");
+    algorithm.classList.add("disabled");
 }
 
 // enable inputs after algorithm is completed
 function enable() {
     inputSize.disabled = false;
-    inputSize.classList.toggle("disabled");
+    inputSize.classList.remove("disabled");
 
     generateButton.disabled = false;
-    generateButton.classList.toggle("disabled");
+    generateButton.classList.remove("disabled");
 
     algorithm.disabled = false;
-    algorithm.classList.toggle("disabled");
+    algorithm.classList.remove("disabled");
 }
 

@@ -4,28 +4,14 @@ let currentFrame = 0;
 let isRendering = false;
 let isPlaying = false; // track play/pause state
 let frameID = null; // variable to store the requestAnimationFrame ID
-let speedDelay = 75; // Default speed delay
+let speedDelay = 500; // Default speed delay
+let defaultColor = getComputedStyle(document.documentElement).getPropertyValue('--bar-color'); // Get default bar color
+const speedArr = [500, 400, 300, 200, 100, 10];
 
 // Update speedDelay dynamically
 const speedInput = document.querySelector("#speed");
 speedInput.addEventListener("input", () => {
-    switch (speedInput.value) {
-        case "1":
-            speedDelay = 150;
-            break;
-        case "2":
-            speedDelay = 100;
-            break;
-        case "3":
-            speedDelay = 75;
-            break;
-        case "4":
-            speedDelay = 50;
-            break;
-        case "5":
-            speedDelay = 25;
-            break;
-    }
+    speedDelay = speedArr[speedInput.value];
 });
 
 // Sort button event listener
@@ -75,7 +61,7 @@ function renderFrame() {
             frameID = requestAnimationFrame(renderFrame);
         }, speedDelay);
     } else if (currentFrame >= operationsQueue.length) {
-        resetAnimation();
+        completeAnimation();
     }
 }
 
@@ -96,6 +82,7 @@ function pauseAnimation() {
 }
 
 function resumeAnimation() {
+    disable();
     isPlaying = true;
     frameID = requestAnimationFrame(renderFrame);
     document.querySelector("#sort").innerText = "Pause";
@@ -112,6 +99,13 @@ function resetAnimation() {
     document.querySelector("#sort").innerText = "Start";
 }
 
+function completeAnimation() {
+    // Change bars to indicate completion (e.g., turn them green)
+    bar.forEach(b => b.style.backgroundColor = "green");
+    document.querySelector("#sort").innerText = "Finished";
+    resetAnimation();
+}
+
 // Function to process a single operation
 function processOperation(operation) {
     const { type, indices, color } = operation;
@@ -121,13 +115,16 @@ function processOperation(operation) {
             bar[indices[1]].style.backgroundColor = "yellow";
             break;
         case "swap":
+            [bar_height[indices[0]], bar_height[indices[1]]] = [bar_height[indices[1]], bar_height[indices[0]]];
             bar[indices[0]].style.height = bar_height[indices[0]] + "%";
             bar[indices[0]].innerText = bar_height[indices[0]];
             bar[indices[1]].style.height = bar_height[indices[1]] + "%";
             bar[indices[1]].innerText = bar_height[indices[1]];
             break;
         case "update":
-            bar[indices[0]].style.backgroundColor = color;
+            indices.forEach(index => {
+                bar[index].style.backgroundColor = color || defaultColor;
+            });
             break;
     }
 }
