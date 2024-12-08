@@ -9,16 +9,16 @@
 
 /* Root Variables */
 :root {
-    --bg-color: #0d1117; /* Dark navy blue for the main background */
-    --text-color: #c9d1d9; /* Soft light blue-gray for text */
-    --button-bg: #1f6feb; /* Rich blue for buttons */
-    --button-hover: #2c78f5; /* Brighter blue for hover state */
-    --button-active: #174aba; /* Deep blue for active state */
-    --canvas-bg: #161b22; /* Slightly lighter dark blue for the canvas */
-    --bar-color: #3dd5ff; /* Bright cyan for bars */
-    --disabled-opacity: 0.4; /* Dim opacity for disabled elements */
-    --highlight-blue: #58a6ff; /* Vivid blue for highlights */
-    --dark-blue: #0a306e; /* Deep blue for accents and borders */
+    --bg-color: #0d1117;
+    --text-color: #c9d1d9;
+    --button-bg: #1f6feb;
+    --button-hover: #2c78f5;
+    --button-active: #174aba;
+    --canvas-bg: #161b22;
+    --bar-color: #3dd5ff;
+    --disabled-opacity: 0.4;
+    --highlight-blue: #58a6ff;
+    --dark-blue: #0a306e;
     --font-family: 'Arial', sans-serif;
     --font-size: 16px;
     --heading-font-size: 20px;
@@ -35,7 +35,7 @@ body {
     font-size: var(--font-size);
 }
 
-/* Left and Right Sections */
+/* Layout Sections */
 .left,
 .right {
     height: 100vh;
@@ -43,7 +43,6 @@ body {
 
 .left {
     width: 30%;
-    /* border: 2px solid var(--highlight-blue); */
 }
 
 .right {
@@ -55,23 +54,23 @@ body {
 /* Select Dropdown Styling */
 select {
     width: 100%;
-    font-size: var(--dropdown-font-size); /* Increased font size */
-    padding: 12px; /* More padding for better touch targets */
+    font-size: var(--dropdown-font-size);
+    padding: 12px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #21262d; /* Darker blue-gray for dropdown background */
-    color: var(--text-color); /* Light text */
-    border: 1px solid var(--highlight-blue); /* Accent border */
+    background-color: #21262d;
+    color: var(--text-color);
+    border: 1px solid var(--highlight-blue);
     transition: background-color 0.3s ease;
 }
 
 select:hover {
-    background-color: #30363d; /* Light hover effect */
+    background-color: #30363d;
 }
 
 select:focus {
-    outline: none; /* Removed default focus border */
-    border: 2px solid var(--bar-color); /* Custom focus effect */
+    outline: none;
+    border: 2px solid var(--bar-color);
 }
 
 /* Tabs Styling */
@@ -87,7 +86,7 @@ select:focus {
 
 .tab button {
     background-color: var(--button-bg);
-    font-size: 17px; /* Decreased font size */
+    font-size: 17px;
     border: 1px solid #bbb;
     border-radius: 5px 5px 0 0;
     width: 50%;
@@ -111,32 +110,25 @@ select:focus {
     display: none;
     padding: 20px;
     margin-top: 10px;
-    background-color: var(--bg-color); /* Match main background */
-    border: 1px solid var(--highlight-blue); /* Bright blue border */
-    color: var(--text-color); /* Light text */
-    /* border-top: none; */
+    background-color: var(--bg-color);
+    border: 1px solid var(--highlight-blue);
+    color: var(--text-color);
     border-radius: 0 5px 5px 5px;
-    animation: fadeIn 1s ease-in-out; /* Improved keyframe */
+    animation: fadeIn 1s ease-in-out;
     font-size: 16px;
 }
 
-<<<<<<< HEAD
-=======
-/* wrap text to fix quicksort pseudocode overflow */
->>>>>>> a598e86fbfd25b7d62ef645df4026ed5709e7386
+/* wrap text to fix pseudocode overflow */
 pre {
     white-space: pre-wrap;
     word-wrap: break-word;
 }
 
-<<<<<<< HEAD
 /* Adding padding to complexity list */
 ul {
     padding: 0px 24px;
 }
 
-=======
->>>>>>> a598e86fbfd25b7d62ef645df4026ed5709e7386
 /* Improved Keyframe */
 @keyframes fadeIn {
     0% {
@@ -153,13 +145,14 @@ ul {
     }
 }
 
+/* Navigation Bar */
 .right-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    background-color: #21262d; /* Darker control bar */
-    color: var(--text-color); /* Light text */
+    background-color: #21262d;
+    color: var(--text-color);
     font-size: 24px;
     padding: 10px 20px;
     height: 10vh;
@@ -188,10 +181,9 @@ ul {
     accent-color: var(--bar-color);
 }
 
-/* Input Range */
+/* Input Range Styling */
 .usr-input input[type="range"] {
-    margin-top: 2px; /* Adds spacing below labels */
-    margin-bottom: 2px;
+    margin: 2px 0;
 }
 
 button {
@@ -246,13 +238,12 @@ button:active {
 }
 
 /* Accessibility Focus Styling */
-button:focus {
+.right button:focus {
     outline: 2px solid var(--bar-color);
     outline-offset: 2px;
-}
+} 
 
 select:focus,
 input:focus {
     outline: 2px solid var(--highlight-blue);
 }
-
