@@ -7,6 +7,7 @@ function bubbleSort() {
             addOperation({
                 type: "compare",
                 indices: [j, j + 1],
+                color: "yellow",
             });
 
             if (bar_height[j] > bar_height[j + 1]) {

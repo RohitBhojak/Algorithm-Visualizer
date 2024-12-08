@@ -121,10 +121,6 @@ function processOperation(operation) {
             bar[indices[1]].style.backgroundColor = "yellow";
             break;
         case "swap":
-            const temp = bar_height[indices[0]];
-            bar_height[indices[0]] = bar_height[indices[1]];
-            bar_height[indices[1]] = temp;
-
             bar[indices[0]].style.height = bar_height[indices[0]] + "%";
             bar[indices[0]].innerText = bar_height[indices[0]];
             bar[indices[1]].style.height = bar_height[indices[1]] + "%";
