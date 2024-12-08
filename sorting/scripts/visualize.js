@@ -5,6 +5,7 @@ let isRendering = false;
 let isPlaying = false; // track play/pause state
 let frameID = null; // variable to store the requestAnimationFrame ID
 let speedDelay = 75; // Default speed delay
+let defaultColor = getComputedStyle(document.documentElement).getPropertyValue('--bar-color'); // Get default bar color
 
 // Update speedDelay dynamically
 const speedInput = document.querySelector("#speed");
@@ -96,6 +97,7 @@ function pauseAnimation() {
 }
 
 function resumeAnimation() {
+    disable();
     isPlaying = true;
     frameID = requestAnimationFrame(renderFrame);
     document.querySelector("#sort").innerText = "Pause";
@@ -127,7 +129,9 @@ function processOperation(operation) {
             bar[indices[1]].innerText = bar_height[indices[1]];
             break;
         case "update":
-            bar[indices[0]].style.backgroundColor = color;
+            indices.forEach(index => {
+                bar[index].style.backgroundColor = color || defaultColor;
+            });
             break;
     }
 }

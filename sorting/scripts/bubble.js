@@ -11,6 +11,8 @@ function bubbleSort() {
             });
 
             if (bar_height[j] > bar_height[j + 1]) {
+                // Swap elements
+                [bar_height[j], bar_height[j + 1]] = [bar_height[j + 1], bar_height[j]];
                 // Enqueue swap operation
                 addOperation({
                     type: "swap",
@@ -21,13 +23,7 @@ function bubbleSort() {
             // Reset the colors to default after comparison
             addOperation({
                 type: "update",
-                indices: [j],
-                color: "blue",
-            });
-            addOperation({
-                type: "update",
-                indices: [j + 1],
-                color: "blue",
+                indices: [j, j+1],
             });
         }
 
