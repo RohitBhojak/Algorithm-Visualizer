@@ -10,54 +10,81 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="logo">
-            <h1>Algorithm Visualizer</h1>
+    <div id="main">
+        <div class="container">
+            <div class="logo">
+                <h1>Algorithm Visualizer</h1>
+            </div>
+            <div class="description">
+                <p>An algorithm visualizer is a tool or platform that graphically demonstrates how algorithms work
+                    step-by-step, making abstract processes like sorting or pathfinding easier to understand.</p>
+            </div>
+            <div class="card-container">
+
+                <div class="card">
+                    <a href="./searching/searching.html">
+                        <div class="image">
+                            <img src="media\searching.jpeg" height="125px" width="125px">
+                        </div>
+                        <div class="caption">Searching</div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a href="./sorting/sorting.html">
+                        <div class="image">
+                            <img src="media/sorting.jpeg" height="125px" width="125px">
+                        </div>
+                        <div class="caption">Sorting</div>
+                    </a>
+                </div>
+            </div>
+            <div class="description">
+                <p>More algorithms are coming soon!</p>
+            </div>
         </div>
-        <div class="card-container">
-
-            <a href="./searching/searching.html">
-                <div class="card">
-                    <div class="image">
-                        <img src="" height="100px" width="100px">
-                    </div>
-                    <div class="caption">Searching</div>
+        <div class="footer">
+            <div class="github">
+                <i class="fa-brands fa-github fa-2xl"></i>
+            </div>
+            <div class="team">
+                <div class="member">
+                    <a href=""><img src="" height="50px" width="50px"></a>
+                    <div class="name"></div>
                 </div>
-            </a>
-
-            <a href="./sorting/sorting.html">
-                <div class="card">
-                    <div class="image">
-                        <img src="" height="100px" width="100px">
-                    </div>
-                    <div class="caption">Sorting</div>
+                <div class="member">
+                    <a href=""><img src="" height="50px" width="50px"></a>
+                    <div class="name"></div>
                 </div>
-            </a>
+                <div class="member">
+                    <a href=""><img src="" height="50px" width="50px"></a>
+                    <div class="name"></div>
+                </div>
+                <div class="member">
+                    <a href=""><img src="" height="50px" width="50px"></a>
+                    <div class="name"></div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="footer">
-        <div class="github">
-            <i class="fa-brands fa-github fa-2xl"></i>
-        </div>
-        <div class="team">
-            <div class="member">
-                <a href=""><img src="" height="50px" width="50px"></a>
-                <div class="name"></div>
-            </div>
-            <div class="member">
-                <a href=""><img src="" height="50px" width="50px"></a>
-                <div class="name"></div>
-            </div>
-            <div class="member">
-                <a href=""><img src="" height="50px" width="50px"></a>
-                <div class="name"></div>
-            </div>
-            <div class="member">
-                <a href=""><img src="" height="50px" width="50px"></a>
-                <div class="name"></div>
-            </div>
-        </div>
-    </div>
+    <!-- JAVASCRIPT CODE  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script>
+        VANTA.NET({
+            el: "#main",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0xf7f7,
+            backgroundColor: 0x0,
+            showDots: false
+        })
+    </script>
 </body>
 
 </html>
