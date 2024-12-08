@@ -12,16 +12,16 @@ const speedInput = document.querySelector("#speed");
 speedInput.addEventListener("input", () => {
     switch (speedInput.value) {
         case "1":
-            speedDelay = 150;
+            speedDelay = 500;
             break;
         case "2":
-            speedDelay = 100;
+            speedDelay = 250;
             break;
         case "3":
-            speedDelay = 50;
+            speedDelay = 100;
             break;
         case "4":
-            speedDelay = 25;
+            speedDelay = 50;
             break;
         case "5":
             speedDelay = 10;
