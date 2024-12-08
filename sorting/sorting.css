@@ -9,21 +9,21 @@
 
 /* Root Variables */
 :root {
-    --bg-color: #f7f7f7;
-    --text-color: #111;
-    --button-bg: #a3d7f5;
-    --button-hover: #7bbff2;
-    --button-active: #4e9bb3;
-    --canvas-bg: #fdfdfd;
-    --bar-color: #00c9ff;
-    --disabled-opacity: 0.5;
-    --highlight-blue: #66a8d8;
-    --dark-blue: #263a6e;
+    --bg-color: #0d1117;
+    --text-color: #c9d1d9;
+    --button-bg: #1f6feb;
+    --button-hover: #2c78f5;
+    --button-active: #174aba;
+    --canvas-bg: #161b22;
+    --bar-color: #3dd5ff;
+    --disabled-opacity: 0.4;
+    --highlight-blue: #58a6ff;
+    --dark-blue: #0a306e;
     --font-family: 'Arial', sans-serif;
     --font-size: 16px;
     --heading-font-size: 20px;
-    --dropdown-font-size: 20px; /* Increased font size for dropdown */
-    --tab-font-size: 16px; /* Decreased font size for tabs */
+    --dropdown-font-size: 20px;
+    --tab-font-size: 16px;
 }
 
 /* Body Styling */
@@ -35,7 +35,7 @@ body {
     font-size: var(--font-size);
 }
 
-/* Left and Right Sections */
+/* Layout Sections */
 .left,
 .right {
     height: 100vh;
@@ -43,7 +43,6 @@ body {
 
 .left {
     width: 30%;
-    border-right: 2px solid var(--highlight-blue);
 }
 
 .right {
@@ -55,22 +54,23 @@ body {
 /* Select Dropdown Styling */
 select {
     width: 100%;
-    font-size: var(--dropdown-font-size); /* Increased font size */
-    padding: 12px; /* More padding for better touch targets */
-    background-color: #f0f8ff; /* Light blue background */
-    border: 1px solid #ccc;
+    font-size: var(--dropdown-font-size);
+    padding: 12px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #21262d;
+    color: var(--text-color);
+    border: 1px solid var(--highlight-blue);
     transition: background-color 0.3s ease;
 }
 
 select:hover {
-    background-color: #e0f7ff; /* Light hover effect */
+    background-color: #30363d;
 }
 
 select:focus {
-    outline: none; /* Removed default focus border */
-    border: 2px solid var(--bar-color); /* Custom focus effect */
+    outline: none;
+    border: 2px solid var(--bar-color);
 }
 
 /* Tabs Styling */
@@ -86,7 +86,7 @@ select:focus {
 
 .tab button {
     background-color: var(--button-bg);
-    font-size: var(--tab-font-size); /* Decreased font size */
+    font-size: 17px;
     border: 1px solid #bbb;
     border-radius: 5px 5px 0 0;
     width: 50%;
@@ -110,26 +110,33 @@ select:focus {
     display: none;
     padding: 20px;
     margin-top: 10px;
-    border: 1px solid #bbb;
-    border-top: none;
+    background-color: var(--bg-color);
+    border: 1px solid var(--highlight-blue);
+    color: var(--text-color);
     border-radius: 0 5px 5px 5px;
-    animation: fadeIn 1s ease-in-out; /* Improved keyframe */
+    animation: fadeIn 1s ease-in-out;
     font-size: 16px;
-    background-color: #f9f9f9;
 }
 
+<<<<<<< HEAD
+=======
 /* wrap text to fix pseudocode overflow */
+>>>>>>> ff49cfca88e18f7a33004c90b2b4e6221c96571c
 pre {
     white-space: pre-wrap;
     word-wrap: break-word;
 }
 
+<<<<<<< HEAD
+/* Animation */
+=======
 /* Adding padding to complexity list */
 ul {
     padding: 0px 24px;
 }
 
 /* Improved Keyframe */
+>>>>>>> ff49cfca88e18f7a33004c90b2b4e6221c96571c
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -145,15 +152,26 @@ ul {
     }
 }
 
+/* Navigation Bar */
+.right-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    background-color: #21262d;
+    color: var(--text-color);
+    font-size: 24px;
+    padding: 10px 20px;
+    height: 10vh;
+}
+
 /* Controls Section */
 .controls {
     display: flex;
-    font-size: 24px;
-    justify-content: space-evenly;
-    text-align: center;
-    background-color: aliceblue;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    height: 10vh;
+    gap: 20px;
 }
 
 .usr-input {
@@ -163,12 +181,16 @@ ul {
 
 .usr-input label {
     font-size: 18px;
-    margin-bottom: 5px;
 }
 
 .usr-input input {
     cursor: pointer;
     accent-color: var(--bar-color);
+}
+
+/* Input Range Styling */
+.usr-input input[type="range"] {
+    margin: 2px 0;
 }
 
 button {
@@ -203,7 +225,7 @@ button:active {
     display: flex;
     align-items: flex-end;
     gap: 2px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--dark-blue);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -232,4 +254,3 @@ select:focus,
 input:focus {
     outline: 2px solid var(--highlight-blue);
 }
-
