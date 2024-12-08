@@ -4,6 +4,7 @@
     padding: 0;
     text-decoration: none;
     text-align: center;
+    box-sizing: border-box;
 }
 
 /* Body and Main Layout */
@@ -11,6 +12,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 #main {
