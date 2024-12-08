@@ -69,27 +69,3 @@ function enable() {
     algorithm.classList.toggle("disabled");
 }
 
-function runAlgorithm() {
-    disable();
-    switch (algorithm.value) {
-        case "bubble":
-            bubbleSort();
-            break;
-        case "insertion":
-            insertionSort();
-            break;
-        case "selection":
-            selectionSort();
-            break;
-        case "merge":
-            mergeSort();
-            break;
-        case "quick":
-            quickSort();
-            break;
-        case "heap":
-            heapSort();
-            break;
-    }
-    enable();
-}

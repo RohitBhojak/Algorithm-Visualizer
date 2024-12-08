@@ -177,27 +177,6 @@ button:active {
     transition: height 0.3s, background-color 0.1s;
 }
 
-.bar:hover {
-    background-color: #ffa500;
-    cursor: pointer;
-}
-
-/* Bar State Colors */
-.bar.sorted {
-    background-color: #4caf50;
-    /* Green */
-}
-
-.bar.swapping {
-    background-color: #f44336;
-    /* Red */
-}
-
-.bar.comparing {
-    background-color: #ffeb3b;
-    /* Yellow */
-}
-
 /* Disabled Inputs */
 .disabled {
     opacity: var(--disabled-opacity);
