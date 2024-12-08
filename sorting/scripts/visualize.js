@@ -4,29 +4,14 @@ let currentFrame = 0;
 let isRendering = false;
 let isPlaying = false; // track play/pause state
 let frameID = null; // variable to store the requestAnimationFrame ID
-let speedDelay = 50; // Default speed delay
+let speedDelay = 500; // Default speed delay
 let defaultColor = getComputedStyle(document.documentElement).getPropertyValue('--bar-color'); // Get default bar color
+const speedArr = [500, 400, 300, 200, 100, 10];
 
 // Update speedDelay dynamically
 const speedInput = document.querySelector("#speed");
 speedInput.addEventListener("input", () => {
-    switch (speedInput.value) {
-        case "1":
-            speedDelay = 500;
-            break;
-        case "2":
-            speedDelay = 250;
-            break;
-        case "3":
-            speedDelay = 100;
-            break;
-        case "4":
-            speedDelay = 50;
-            break;
-        case "5":
-            speedDelay = 10;
-            break;
-    }
+    speedDelay = speedArr[speedInput.value];
 });
 
 // Sort button event listener
