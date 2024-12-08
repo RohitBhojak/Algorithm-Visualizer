@@ -118,12 +118,25 @@ select:focus {
     font-size: 16px;
 }
 
+<<<<<<< HEAD
+=======
+/* wrap text to fix pseudocode overflow */
+>>>>>>> ff49cfca88e18f7a33004c90b2b4e6221c96571c
 pre {
     white-space: pre-wrap;
     word-wrap: break-word;
 }
 
+<<<<<<< HEAD
 /* Animation */
+=======
+/* Adding padding to complexity list */
+ul {
+    padding: 0px 24px;
+}
+
+/* Improved Keyframe */
+>>>>>>> ff49cfca88e18f7a33004c90b2b4e6221c96571c
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -232,10 +245,10 @@ button:active {
 }
 
 /* Accessibility Focus Styling */
-button:focus {
+.right button:focus {
     outline: 2px solid var(--bar-color);
     outline-offset: 2px;
-}
+} 
 
 select:focus,
 input:focus {

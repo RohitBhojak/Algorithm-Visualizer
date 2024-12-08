@@ -1,67 +1,56 @@
+//I honestly don't know how this works
 function insertionSort() {
     const n = bar_height.length;
+    let copy = [...bar_height]; 
 
     for (let i = 1; i < n; i++) {
-        let key = bar_height[i];
+        let key = copy[i];
         let j = i - 1;
 
-        // Highlight the current element being inserted
+        // Treat first element as sorted
         addOperation({
             type: "update",
-            indices: [i],
-            color: "yellow",
+            indices: [0],
+            color: "green",
         });
+        
+        // Move elements of copy[0..i-1] that are greater than key
+        while (j >= 0 && copy[j] > key) {
 
-        // Move elements of bar_height[0..i-1] that are greater than key
-        while (j >= 0 && bar_height[j] > key) {
-            // Enqueue comparison operation
+            // Enqueue comparison operation works when both conditions are true, i.e. for swappable elements
+            //swappable elements turn yellow otherwise remains defaulColored
             addOperation({
                 type: "compare",
                 indices: [j, j + 1],
-                color: "yellow",
             });
 
             // Move the element one position ahead
-            bar_height[j + 1] = bar_height[j];
+            copy[j + 1] = copy[j];
 
-            // Enqueue update operation for moving the element
+            // Enqueue swap operation to simulate the move
             addOperation({
                 type: "swap",
                 indices: [j, j + 1],
             });
 
+            // Enqueue update operation to reset the color to
+            addOperation({
+                type: "update",
+                indices: [j + 1],
+                color: "green",
+            });
             j--;
         }
 
-        // Place the key at its correct position
-        bar_height[j + 1] = key;
-
-        // Enqueue update operation to indicate placement
+        //otherwise the last elements will be left yellow
         addOperation({
             type: "update",
             indices: [j + 1],
             color: "green",
         });
 
-        // Reset colors for elements no longer involved in the current iteration
-        for (let k = 0; k <= i; k++) {
-            addOperation({
-                type: "update",
-                indices: [k],
-                color: "blue",
-            });
-        }
+        copy[j + 1] = key;
     }
 
-    // Mark all elements as sorted at the end
-    for (let i = 0; i < n; i++) {
-        addOperation({
-            type: "update",
-            indices: [i],
-            color: "green",
-        });
-    }
-
-    // Start the rendering process
     startAnimation();
 }
