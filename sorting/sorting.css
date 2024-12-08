@@ -9,13 +9,21 @@
 
 /* Root Variables */
 :root {
-    --bg-color: #f1f1f1;
-    --text-color: #000;
-    --button-bg: #ddd;
-    --button-hover: #ccc;
-    --canvas-bg: whitesmoke;
-    --bar-color: rgb(0, 217, 255);
+    --bg-color: #f7f7f7;
+    --text-color: #111;
+    --button-bg: #a3d7f5;
+    --button-hover: #7bbff2;
+    --button-active: #4e9bb3;
+    --canvas-bg: #fdfdfd;
+    --bar-color: #00c9ff;
     --disabled-opacity: 0.5;
+    --highlight-blue: #66a8d8;
+    --dark-blue: #263a6e;
+    --font-family: 'Arial', sans-serif;
+    --font-size: 16px;
+    --heading-font-size: 20px;
+    --dropdown-font-size: 20px; /* Increased font size for dropdown */
+    --tab-font-size: 16px; /* Decreased font size for tabs */
 }
 
 /* Body Styling */
@@ -23,7 +31,8 @@ body {
     display: flex;
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: Arial, sans-serif;
+    font-family: var(--font-family);
+    font-size: var(--font-size);
 }
 
 /* Left and Right Sections */
@@ -34,7 +43,7 @@ body {
 
 .left {
     width: 30%;
-    border-right: 2px solid #ccc;
+    border-right: 2px solid var(--highlight-blue);
 }
 
 .right {
@@ -43,14 +52,25 @@ body {
     flex-direction: column;
 }
 
-/* Select Dropdown */
+/* Select Dropdown Styling */
 select {
     width: 100%;
-    font-size: 24px;
-    text-align: center;
-    height: 10%;
-    border: 1px solid #bbb;
+    font-size: var(--dropdown-font-size); /* Increased font size */
+    padding: 12px; /* More padding for better touch targets */
+    background-color: #f0f8ff; /* Light blue background */
+    border: 1px solid #ccc;
     border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+select:hover {
+    background-color: #e0f7ff; /* Light hover effect */
+}
+
+select:focus {
+    outline: none; /* Removed default focus border */
+    border: 2px solid var(--bar-color); /* Custom focus effect */
 }
 
 /* Tabs Styling */
@@ -65,14 +85,14 @@ select {
 }
 
 .tab button {
-    background-color: #e0e0e0;
-    font-size: 18px;
+    background-color: var(--button-bg);
+    font-size: var(--tab-font-size); /* Decreased font size */
     border: 1px solid #bbb;
     border-radius: 5px 5px 0 0;
     width: 50%;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 12px 16px;
     transition: 0.3s;
 }
 
@@ -81,18 +101,21 @@ select {
 }
 
 .tab button.active {
-    background-color: var(--button-bg);
+    background-color: var(--button-active);
+    color: #fff;
 }
 
 /* Tab Content Styling */
 .tabcontent {
     display: none;
-    padding: 6px 0px;
+    padding: 20px;
+    margin-top: 10px;
     border: 1px solid #bbb;
     border-top: none;
     border-radius: 0 5px 5px 5px;
-    animation: fadeEffect 1s;
+    animation: fadeIn 1s ease-in-out; /* Improved keyframe */
     font-size: 16px;
+    background-color: #f9f9f9;
 }
 
 /* wrap text to fix quicksort pseudocode overflow */
@@ -101,13 +124,19 @@ pre {
     word-wrap: break-word;
 }
 
-@keyframes fadeEffect {
-    from {
+/* Improved Keyframe */
+@keyframes fadeIn {
+    0% {
         opacity: 0;
+        transform: scale(0.95);
     }
-
-    to {
+    50% {
+        opacity: 0.5;
+        transform: scale(1.05);
+    }
+    100% {
         opacity: 1;
+        transform: scale(1);
     }
 }
 
@@ -145,16 +174,19 @@ button {
     border-radius: 5px;
     background-color: var(--button-bg);
     color: var(--text-color);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 button:hover {
     background-color: var(--button-hover);
     transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 button:active {
+    background-color: var(--button-active);
     transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Canvas Styling */
@@ -166,6 +198,8 @@ button:active {
     display: flex;
     align-items: flex-end;
     gap: 2px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .bar {
@@ -182,3 +216,15 @@ button:active {
     opacity: var(--disabled-opacity);
     cursor: not-allowed;
 }
+
+/* Accessibility Focus Styling */
+button:focus {
+    outline: 2px solid var(--bar-color);
+    outline-offset: 2px;
+}
+
+select:focus,
+input:focus {
+    outline: 2px solid var(--highlight-blue);
+}
+
