@@ -10,11 +10,6 @@ function bubbleSort() {
             });
 
             if (bar_height[j] > bar_height[j + 1]) {
-                // Swap the elements in the array
-                const temp = bar_height[j];
-                bar_height[j] = bar_height[j + 1];
-                bar_height[j + 1] = temp;
-
                 // Enqueue swap operation
                 addOperation({
                     type: "swap",
