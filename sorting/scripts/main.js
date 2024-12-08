@@ -23,6 +23,10 @@ generateButton.addEventListener("click", () => {
     generateArr(inputSize.value);
 })
 
+algorithm.addEventListener("input", () => {
+    completeAnimation(defaultColor);
+})
+
 // functions
 function generateArr(size) {
     canvas.innerHTML = "";  // Clear canvas

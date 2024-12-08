@@ -99,9 +99,9 @@ function resetAnimation() {
     document.querySelector("#sort").innerText = "Start";
 }
 
-function completeAnimation() {
+function completeAnimation(color = "green") {
     // Color bars green to indicate completion
-    bar.forEach(b => b.style.backgroundColor = "green");
+    bar.forEach(b => b.style.backgroundColor = color);
     resetAnimation();
 }
 

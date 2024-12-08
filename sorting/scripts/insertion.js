@@ -7,16 +7,12 @@ function insertionSort() {
         let key = copy[i];
         let j = i - 1;
 
-        /**
-         * doesn't work as i intended
-         * if(j>=0 && copy[j] < key) {
-            addOperation({
-                type: "update",
-                indices: [j + 1],
-                color: "green",
-            });
-        }
-            **/
+        // Treat first element as sorted
+        addOperation({
+            type: "update",
+            indices: [0],
+            color: "green",
+        });
         
         // Move elements of copy[0..i-1] that are greater than key
         while (j >= 0 && copy[j] > key) {
