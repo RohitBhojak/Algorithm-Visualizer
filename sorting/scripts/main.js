@@ -8,15 +8,17 @@ const generateButton = document.querySelector("#generate");
 const algorithm = document.querySelector("#algorithm");
 const inputSpeed = document.querySelector("#speed");
 
-// event listeners
+// Generate array on page load
 document.addEventListener("DOMContentLoaded", () => {
     generateArr(inputSize.value);
 })
 
+// Generate array on size change
 inputSize.addEventListener("input", () => {
     generateArr(inputSize.value);
 })
 
+// Generate array on generate button click
 generateButton.addEventListener("click", () => {
     generateArr(inputSize.value);
 })
@@ -41,14 +43,13 @@ function generateArr(size) {
 
         newBar.style.transition = "all .5s ease-in-out";
 
-        // Use requestAnimationFrame for better animation timing
+        // requestAnimationFrame for better animation timing
         requestAnimationFrame(() => {
             newBar.style.height = `${height}%`;
         });
 
         // Store the bar element
         bar.push(newBar);
-        console.log(bar[i]);
     }
 }
 

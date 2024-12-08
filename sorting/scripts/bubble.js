@@ -1,47 +1,55 @@
 function bubbleSort() {
-    const n = bar_height.length; // Use bar_height.length instead of inputSize.value
+    const n = bar_height.length; 
+    let copy = [...bar_height]; // Create a copy of bar_height for sorting
+    let swapped = false;
 
     for (let i = 0; i < n - 1; i++) {
+        swapped = false;
+        
         for (let j = 0; j < n - i - 1; j++) {
             // Enqueue comparison operation
             addOperation({
                 type: "compare",
-                indices: [j, j + 1],
-                color: "yellow",
+                indices: [j, j + 1]
             });
-
-            if (bar_height[j] > bar_height[j + 1]) {
-                // Swap elements
-                [bar_height[j], bar_height[j + 1]] = [bar_height[j + 1], bar_height[j]];
+            
+            if (copy[j] > copy[j + 1]) {
+                swapped = true;
                 // Enqueue swap operation
                 addOperation({
                     type: "swap",
-                    indices: [j, j + 1],
+                    indices: [j, j + 1]
                 });
+                
+                // Swap the values in the copy array for simulation
+                [copy[j], copy[j + 1]] = [copy[j + 1], copy[j]];
             }
 
-            // Reset the colors to default after comparison
+            // Enqueue update operation to reset the color after comparison
             addOperation({
                 type: "update",
-                indices: [j, j+1],
+                indices: [j, j + 1]
             });
         }
 
-        // Mark the last sorted element
+        // Mark the last sorted element in this pass as green (sorted)
         addOperation({
             type: "update",
             indices: [n - i - 1],
-            color: "green",
+            color: "green"
         });
+
+        // If no swaps occurred, break early (array is sorted)
+        if (!swapped) break;
     }
 
-    // Mark the first element as sorted
+    // Mark the first element as sorted (green)
     addOperation({
         type: "update",
         indices: [0],
-        color: "green",
+        color: "green"
     });
-
-    // Start the rendering process
+    
+    // Start animation after all operations are queued
     startAnimation();
 }

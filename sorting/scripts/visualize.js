@@ -4,7 +4,7 @@ let currentFrame = 0;
 let isRendering = false;
 let isPlaying = false; // track play/pause state
 let frameID = null; // variable to store the requestAnimationFrame ID
-let speedDelay = 75; // Default speed delay
+let speedDelay = 50; // Default speed delay
 let defaultColor = getComputedStyle(document.documentElement).getPropertyValue('--bar-color'); // Get default bar color
 
 // Update speedDelay dynamically
@@ -18,13 +18,13 @@ speedInput.addEventListener("input", () => {
             speedDelay = 100;
             break;
         case "3":
-            speedDelay = 75;
-            break;
-        case "4":
             speedDelay = 50;
             break;
-        case "5":
+        case "4":
             speedDelay = 25;
+            break;
+        case "5":
+            speedDelay = 10;
             break;
     }
 });
@@ -68,7 +68,6 @@ function addOperation(operation) {
 function renderFrame() {
     if (currentFrame < operationsQueue.length && isPlaying) {
         const operation = operationsQueue[currentFrame];
-        console.log(operation);
         processOperation(operation);
         currentFrame++;
 
@@ -77,7 +76,7 @@ function renderFrame() {
             frameID = requestAnimationFrame(renderFrame);
         }, speedDelay);
     } else if (currentFrame >= operationsQueue.length) {
-        resetAnimation();
+        completeAnimation();
     }
 }
 
@@ -115,6 +114,13 @@ function resetAnimation() {
     document.querySelector("#sort").innerText = "Start";
 }
 
+function completeAnimation() {
+    // Change bars to indicate completion (e.g., turn them green)
+    bar.forEach(b => b.style.backgroundColor = "green");
+    document.querySelector("#sort").innerText = "Finished";
+    resetAnimation();
+}
+
 // Function to process a single operation
 function processOperation(operation) {
     const { type, indices, color } = operation;
@@ -124,6 +130,7 @@ function processOperation(operation) {
             bar[indices[1]].style.backgroundColor = "yellow";
             break;
         case "swap":
+            [bar_height[indices[0]], bar_height[indices[1]]] = [bar_height[indices[1]], bar_height[indices[0]]];
             bar[indices[0]].style.height = bar_height[indices[0]] + "%";
             bar[indices[0]].innerText = bar_height[indices[0]];
             bar[indices[1]].style.height = bar_height[indices[1]] + "%";
