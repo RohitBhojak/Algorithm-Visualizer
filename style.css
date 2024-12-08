@@ -60,6 +60,7 @@ body {
     margin-bottom: 15px;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.3s ease;
 }
 
 /* Image Styles */
@@ -71,9 +72,13 @@ body {
 }
 
 /* Hover Effects for Image */
-.image:hover {
+.card:hover {
     border-radius: 50%; /* Fully round on hover */
     transform: scale(1.1); /* Slight scale effect */
+}
+
+.card:active {
+    transform: scale(0.9);
 }
 
 /* Caption Styles */
