@@ -1,6 +1,6 @@
 function selectionSort() {
-    const n = bar_height.length; 
-    let copy = [...bar_height]; // Create a copy of bar_height for sorting
+    const n = bar_height.length;
+    let copy = [...bar_height];
 
     for (let i = 0; i < n - 1; i++) {
         let minIndex = i;
@@ -15,8 +15,9 @@ function selectionSort() {
         for (let j = i + 1; j < n; j++) {
             // Enqueue comparison operation
             addOperation({
-                type: "compare",
-                indices: [j, minIndex]
+                type: "update",
+                indices: [j],
+                color: "yellow"
             });
 
             if (copy[j] < copy[minIndex]) {
@@ -36,11 +37,13 @@ function selectionSort() {
                 });
             }
 
-            // Reset color for the compared element
-            addOperation({
-                type: "update",
-                indices: [j]
-            });
+            // Reset color for non-minimum elements
+            if (j !== minIndex) {
+                addOperation({
+                    type: "update",
+                    indices: [j]
+                });
+            }
         }
 
         if (minIndex !== i) {
@@ -51,7 +54,7 @@ function selectionSort() {
             });
 
             [copy[i], copy[minIndex]] = [copy[minIndex], copy[i]];
-        } else {
+            
             // Reset color for the swapped element
             addOperation({
                 type: "update",
