@@ -1,7 +1,6 @@
 // variables
 let operationsQueue = [];
 let currentFrame = 0;
-let isRendering = false;
 let isPlaying = false; // track play/pause state
 let frameID = null; // variable to store the requestAnimationFrame ID
 let speedDelay = 500; // Default speed delay
@@ -71,7 +70,6 @@ function renderFrame() {
 // Animation Control Functions
 function startAnimation() {
     disable();
-    isRendering = true;
     isPlaying = true;
     frameID = requestAnimationFrame(renderFrame);
     document.querySelector("#sort").innerText = "Pause";
@@ -93,7 +91,6 @@ function resumeAnimation() {
 
 function resetAnimation() {
     enable();
-    isRendering = false;
     isPlaying = false;
     currentFrame = 0;
     operationsQueue = [];
