@@ -234,6 +234,7 @@ button:active {
     align-items: flex-end;
     justify-content: center;
     transition: height 0.3s, background-color 0.1s;
+    color: black;
 }
 
 /* Disabled Inputs */
