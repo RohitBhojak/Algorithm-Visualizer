@@ -3,9 +3,9 @@ let operationsQueue = [];
 let currentFrame = 0;
 let isPlaying = false; // track play/pause state
 let frameID = null; // variable to store the requestAnimationFrame ID
-let speedDelay = 500; // Default speed delay
+let speedDelay = 600; // Default speed delay
 let defaultColor = getComputedStyle(document.documentElement).getPropertyValue('--bar-color'); // Get default bar color
-const speedArr = [500, 400, 300, 200, 100, 10];
+const speedArr = [1000, 800, 600, 400, 200, 10];
 
 // colors
 const yellow = "#f8d000";
