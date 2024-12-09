@@ -1,6 +1,7 @@
 function selectionSort() {
     const n = bar_height.length;
     let copy = [...bar_height];
+    const orange = "#ff9f00";
 
     for (let i = 0; i < n - 1; i++) {
         let minIndex = i;
@@ -9,7 +10,7 @@ function selectionSort() {
         addOperation({
             type: "update",
             indices: [minIndex],
-            color: "orange" // Highlight the current minimum
+            color: orange // Highlight the current minimum
         });
 
         for (let j = i + 1; j < n; j++) {
@@ -33,7 +34,7 @@ function selectionSort() {
                 addOperation({
                     type: "update",
                     indices: [minIndex],
-                    color: "orange"
+                    color: orange
                 });
             }
 
@@ -54,7 +55,7 @@ function selectionSort() {
             });
 
             [copy[i], copy[minIndex]] = [copy[minIndex], copy[i]];
-            
+
             // Reset color for the swapped element
             addOperation({
                 type: "update",

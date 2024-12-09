@@ -8,6 +8,9 @@ let speedDelay = 500; // Default speed delay
 let defaultColor = getComputedStyle(document.documentElement).getPropertyValue('--bar-color'); // Get default bar color
 const speedArr = [500, 400, 300, 200, 100, 10];
 
+// colors
+const yellow = "#f8d000";
+
 // Update speedDelay dynamically
 const speedInput = document.querySelector("#speed");
 speedInput.addEventListener("input", () => {
@@ -110,8 +113,8 @@ function processOperation(operation) {
     const { type, indices, color } = operation;
     switch (type) {
         case "compare":
-            bar[indices[0]].style.backgroundColor = "yellow";
-            bar[indices[1]].style.backgroundColor = "yellow";
+            bar[indices[0]].style.backgroundColor = yellow;
+            bar[indices[1]].style.backgroundColor = yellow;
             break;
         case "swap":
             [bar_height[indices[0]], bar_height[indices[1]]] = [bar_height[indices[1]], bar_height[indices[0]]];

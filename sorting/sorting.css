@@ -24,6 +24,7 @@
     --heading-font-size: 20px;
     --dropdown-font-size: 20px;
     --tab-font-size: 16px;
+    --nav-bg-color: #21262d;
 }
 
 /* Body Styling */
@@ -51,6 +52,17 @@ body {
     flex-direction: column;
 }
 
+/* Logo styling */
+.logo {
+    font-family: 'Times New Roman', Times, serif;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    font-size: calc(2*var(--font-size));
+    font-weight: bold;
+    justify-content: center;
+}
+
 /* Select Dropdown Styling */
 select {
     width: 100%;
@@ -58,10 +70,12 @@ select {
     padding: 12px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #21262d;
+    background-color: var(--nav-bg-color);
     color: var(--text-color);
     border: 1px solid var(--highlight-blue);
     transition: background-color 0.3s ease;
+    text-align: center;
+    cursor: pointer;
 }
 
 select:hover {
@@ -151,7 +165,7 @@ ul {
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    background-color: #21262d;
+    background-color: var(--nav-bg-color);
     color: var(--text-color);
     font-size: 24px;
     padding: 10px 20px;
@@ -165,6 +179,11 @@ ul {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+    height: 70%;
+}
+
+#generate {
+    height: 100%;
 }
 
 .usr-input {
@@ -229,6 +248,7 @@ button:active {
     align-items: flex-end;
     justify-content: center;
     transition: height 0.3s, background-color 0.1s;
+    color: black;
 }
 
 /* Disabled Inputs */
