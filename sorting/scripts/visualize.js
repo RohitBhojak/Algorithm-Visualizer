@@ -30,7 +30,7 @@ document.querySelector("#sort").addEventListener("click", () => {
                 selectionSort();
                 break;
             case "merge":
-                mergeSort();
+                mergeSort( 0, bar_height.length - 1);
                 break;
             case "quick":
                 quickSort();
