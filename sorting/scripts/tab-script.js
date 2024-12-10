@@ -3,16 +3,16 @@ const algorithmInfo = {
     bubble: {
         pseudocode: `
             <pre>
-    BubbleSort(arr)
-        n = arr.length
-        for i = 0 to n-1
-            swapped = false
-            for j = 0 to n-i-1
-                if arr[j] > arr[j+1]
-                    swap arr[j] and arr[j+1]
-                    swapped = true
-            if not swapped
-                break
+BubbleSort(arr)
+    n = arr.length
+    for i = 0 to n-1
+        swapped = false
+        for j = 0 to n-i-1
+            if arr[j] > arr[j+1]
+                swap arr[j] and arr[j+1]
+                swapped = true
+        if not swapped
+            break
             </pre>
         `,
         complexities: `
@@ -31,15 +31,15 @@ const algorithmInfo = {
     insertion: {
         pseudocode: `
             <pre>
-    InsertionSort(arr)
-        n = arr.length
-        for i = 1 to n
-            key = arr[i]
-            j = i - 1
-            while j >= 0 and arr[j] > key
-                arr[j + 1] = arr[j]
-                j = j - 1
-            arr[j + 1] = key
+InsertionSort(arr)
+    n = arr.length
+    for i = 1 to n
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > key
+            arr[j + 1] = arr[j]
+            j = j - 1
+        arr[j + 1] = key
             </pre>
         `,
         complexities: `
@@ -58,14 +58,14 @@ const algorithmInfo = {
     selection: {
         pseudocode: `
             <pre>
-    SelectionSort(arr)
-        n = arr.length
-        for i = 0 to n-1
-            minIdx = i
-            for j = i+1 to n
-                if arr[j] < arr[minIdx]
-                    minIdx = j
-            swap arr[i] and arr[minIdx]
+SelectionSort(arr)
+    n = arr.length
+    for i = 0 to n-1
+        minIdx = i
+        for j = i+1 to n
+            if arr[j] < arr[minIdx]
+                minIdx = j
+        swap arr[i] and arr[minIdx]
             </pre>
         `,
         complexities: `
@@ -84,27 +84,37 @@ const algorithmInfo = {
     merge: {
         pseudocode: `
             <pre>
-    MergeSort(arr)
-        n = arr.length
-        if n > 1
-            mid = n // 2
-            left = arr[0...mid]
-            right = arr[mid...n]
-            MergeSort(left)
-            MergeSort(right)
-            merge(left, right)
+mergeSort(arr, low, high):
+    if low >= high:
+        return
+    mid = (low + high) / 2
+    mergeSort(arr, low, mid)
+    mergeSort(arr, mid + 1, high)
+    merge(arr, low, mid, high)
 
-    merge(left, right)
-        result = []
-        i = j = 0
-        while i < left.length and j < right.length
-            if left[i] < right[j]
-                append left[i] to result
-                i = i + 1
-            else
-                append right[j] to result
-                j = j + 1
-        return result
+merge(arr, low, mid, high):
+    create temp list
+    left = low, right = mid + 1
+
+    while left <= mid and right <= high:
+        if array[left] < array[right]:
+            add array[left] to temp
+            left++
+        else:
+            add array[right] to temp
+            right++
+
+    while left <= mid:
+        add array[left] to temp
+        left++
+    
+    while right <= high:
+        add array[right] to temp
+        right++
+
+    for i = low to high:
+        array[i] = temp[i - low]
+        
             </pre>
         `,
         complexities: `
@@ -123,19 +133,24 @@ const algorithmInfo = {
     quick: {
         pseudocode: `
             <pre>
-    QuickSort(arr)
-        n = arr.length
-        if n <= 1
-            return arr
-        pivot = arr[n // 2]
-        left = []
-        right = []
-        for each element in arr
-            if element < pivot
-                append to left
-            else
-                append to right
-        return QuickSort(left) + [pivot] + QuickSort(right)
+QuickSort(arr,low,high)
+    if low < high
+        partIdx = Part(arr, low, high)
+        QuickSort(arr, low, partIdx - 1)
+        QuickSort(arr, partIdx + 1, high)
+Part(arr,low,high)
+    pivot = arr[low]
+    i = low
+    j = high
+    while i < j
+        while arr[i] <= pivot
+            increment i
+        while arr[i] > pivot
+            decrement j
+        if i < j
+            swap arr[i] and arr[j]
+        
+    swap arr[low] and arr[j]
             </pre>
         `,
         complexities: `
