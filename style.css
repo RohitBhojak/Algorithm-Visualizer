@@ -94,7 +94,7 @@ body {
 .card:hover .caption {
     color: #ff9800;
 }
-
+ 
 /* Footer Styles */
 .footer {
     display: flex;
@@ -123,7 +123,24 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center; /* Align vertically */
+    align-items: center;
+    align-items: center;
+    gap: 4px; 
+}
+
+.team-meet {
+    color: white;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    line-height: 1.0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    word-break: break-word;
+    overflow: hidden;
 }
 
 /* Media Query for Smaller Screens (max-width: 480px) */

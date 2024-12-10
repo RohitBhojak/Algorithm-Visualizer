@@ -212,7 +212,7 @@ button {
     border: none;
     border-radius: 5px;
     background-color: var(--button-bg);
-    color: var(--text-color);
+    color: white;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
