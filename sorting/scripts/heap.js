@@ -1,29 +1,31 @@
-function heapify(bar_height, n, i) {
-    let largest = i;
-    let left = 2 * i + 1;
-    let right = 2 * i + 2;
-    if (left < n && bar_height[left] > bar_height[largest]) {
-        largest = left;
+function heap() {
+    const arr = [...bar_height];
+
+    function heapify(arr, i, n) {
+        let left = 2 * i + 1;
+        let right = 2 * i + 2;
+        let largest = i;
+        if (left < n && arr[left] > arr[i]) {
+            largest = left;
+        }
+        if (right < n && arr[right] > arr[largest]) {
+            largest = right;
+        }
+        if (largest != i) {
+            swap(arr, i, largest);
+            heapify(arr, largest, n);
+        }
     }
-    if (right < n && bar_height[right] > bar_height[largest]) {
-        largest = right;
+
+    function heapSort(arr) {
+        let n = arr.length;
+        for (let i = n / 2 - 1; i >= 0; i--) {
+            heapify(arr, i, n);
+        }
+        for (let i = n - 1; i >= 0; i--) {
+            swap(arr, 0, i);
+            heapify(arr, 0, i);
+        }
     }
-    if (largest != i) {
-        let temp = bar_height[i];
-        bar_height[i] = bar_height[largest];
-        bar_height[largest] = temp;
-        heapify(bar_height, n, largest);
-    }
-}
-function heapSort() {
-    const size = document.querySelector("#size");
-    for (let i = Math.floor(size / 2) - 1; i >= 0; i--) {
-        heapify(bar_height, size, i);
-    }
-    for (let i = size - 1; i > 0; i--) {
-        let temp = bar_height[0];
-        bar_height[0] = bar_height[i];
-        bar_height[i] = temp;
-        heapify(bar_height, i, 0);
-    }
+    startAnimation();
 }
