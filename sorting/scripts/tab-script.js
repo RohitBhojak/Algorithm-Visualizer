@@ -3,7 +3,7 @@ const algorithmInfo = {
     bubble: {
         pseudocode: `
             <pre>
-BubbleSort(arr)
+bubbleSort(arr)
     n = arr.length
     for i = 0 to n-1
         swapped = false
@@ -31,7 +31,7 @@ BubbleSort(arr)
     insertion: {
         pseudocode: `
             <pre>
-InsertionSort(arr)
+insertionSort(arr)
     n = arr.length
     for i = 1 to n
         key = arr[i]
@@ -58,7 +58,7 @@ InsertionSort(arr)
     selection: {
         pseudocode: `
             <pre>
-SelectionSort(arr)
+selectionSort(arr)
     n = arr.length
     for i = 0 to n-1
         minIdx = i
@@ -133,12 +133,13 @@ merge(arr, low, mid, high):
     quick: {
         pseudocode: `
             <pre>
-QuickSort(arr,low,high)
+quickSort(arr,low,high)
     if low < high
-        partIdx = Part(arr, low, high)
-        QuickSort(arr, low, partIdx - 1)
-        QuickSort(arr, partIdx + 1, high)
-Part(arr,low,high)
+        partIdx = part(arr, low, high)
+        quickSort(arr, low, partIdx - 1)
+        quickSort(arr, partIdx + 1, high)
+        
+part(arr,low,high)
     pivot = arr[low]
     i = low
     j = high
