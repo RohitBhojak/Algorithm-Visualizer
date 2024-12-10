@@ -108,6 +108,7 @@ select:focus {
     cursor: pointer;
     padding: 12px 16px;
     transition: 0.3s;
+    z-index: 100; /*to fix tabcontent animation overlap*/
 }
 
 .tab button:hover {
@@ -123,11 +124,11 @@ select:focus {
 .tabcontent {
     display: none;
     padding: 20px;
-    margin-top: 10px;
+    /* margin-top: 10px; remove margin*/
     background-color: var(--bg-color);
     border: 1px solid var(--highlight-blue);
     color: var(--text-color);
-    border-radius: 0 5px 5px 5px;
+    border-radius: 0 0px 5px 5px;
     animation: fadeIn 1s ease-in-out;
     font-size: 16px;
 }
