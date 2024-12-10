@@ -124,6 +124,7 @@ select:focus {
 .tabcontent {
     display: none;
     padding: 20px;
+    padding-bottom: 0px;
     /* margin-top: 10px; remove margin*/
     background-color: var(--bg-color);
     border: 1px solid var(--highlight-blue);

@@ -134,3 +134,11 @@ function processOperation(operation) {
             break;
     }
 }
+
+function generateIndices(start, end) {
+    const indices = [];
+    for (let i = start; i <= end; i++) {
+        indices.push(i);
+    }
+    return indices;
+}

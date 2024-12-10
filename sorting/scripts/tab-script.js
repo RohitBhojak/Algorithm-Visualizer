@@ -85,17 +85,15 @@ selectionSort(arr)
         pseudocode: `
             <pre>
 mergeSort(arr, low, high):
-    if low >= high:
-        return
-    mid = (low + high) / 2
-    mergeSort(arr, low, mid)
-    mergeSort(arr, mid + 1, high)
-    merge(arr, low, mid, high)
+    if low < high
+        mid = (low + high) / 2
+        mergeSort(arr, low, mid)
+        mergeSort(arr, mid + 1, high)
+        merge(arr, low, mid, high)
 
 merge(arr, low, mid, high):
     create temp list
     left = low, right = mid + 1
-
     while left <= mid and right <= high:
         if array[left] < array[right]:
             add array[left] to temp
@@ -103,18 +101,14 @@ merge(arr, low, mid, high):
         else:
             add array[right] to temp
             right++
-
     while left <= mid:
         add array[left] to temp
-        left++
-    
+        left++    
     while right <= high:
         add array[right] to temp
         right++
-
     for i = low to high:
         array[i] = temp[i - low]
-        
             </pre>
         `,
         complexities: `
@@ -170,26 +164,20 @@ part(arr,low,high)
     heap: {
         pseudocode: `
             <pre>
-    HeapSort(arr)
+    heapSort(arr)
         n = arr.length
-        buildMaxHeap(arr)
+        for i = n//2 to 0
+            heapify(arr, i, n)
         for i = n-1 to 1
             swap arr[0] and arr[i]
             heapify(arr, 0, i)
 
-    buildMaxHeap(arr)
-        n = arr.length
-        for i = n//2 to 0
-            heapify(arr, i, n)
-
-    heapify(arr, i, size)
-        n = size
+    heapify(arr, i, n)
         left = 2 * i + 1
         right = 2 * i + 2
+        largest = i
         if left < n and arr[left] > arr[i]
             largest = left
-        else
-            largest = i
         if right < n and arr[right] > arr[largest]
             largest = right
         if largest != i

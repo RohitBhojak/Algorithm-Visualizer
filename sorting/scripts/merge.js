@@ -76,14 +76,6 @@ function mergeSort() {
         }
     }
 
-    function generateIndices(start, end) {
-        const indices = [];
-        for (let i = start; i <= end; i++) {
-            indices.push(i);
-        }
-        return indices;
-    }
-
     const arr = [...bar_height];
     recursiveSort(arr, 0, arr.length - 1);
     startAnimation();
