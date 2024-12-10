@@ -1,7 +1,6 @@
 function selectionSort() {
     const n = bar_height.length;
     let copy = [...bar_height];
-    const orange = "#ff9f00";
 
     for (let i = 0; i < n - 1; i++) {
         let minIndex = i;

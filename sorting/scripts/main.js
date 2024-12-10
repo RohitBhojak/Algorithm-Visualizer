@@ -8,6 +8,12 @@ const generateButton = document.querySelector("#generate");
 const algorithm = document.querySelector("#algorithm");
 const inputSpeed = document.querySelector("#speed");
 
+// Initial adjustment on page load
+adjustSizeLimit();
+
+// Recalculate on window resize
+window.addEventListener("resize", adjustSizeLimit);
+
 // Generate array on page load
 document.addEventListener("DOMContentLoaded", () => {
     generateArr(inputSize.value);
@@ -23,14 +29,15 @@ generateButton.addEventListener("click", () => {
     generateArr(inputSize.value);
 })
 
+// Reset color on algorithm change
 algorithm.addEventListener("input", () => {
     completeAnimation(defaultColor);
 })
 
-// functions
+// Generate random array
 function generateArr(size) {
     canvas.innerHTML = "";  // Clear canvas
-    resetAnimation();
+    if (frameID) resetAnimation();
 
     bar = [];  // Reset bar array
     bar_height = [];  // Reset height array
@@ -57,6 +64,28 @@ function generateArr(size) {
     }
 }
 
+// Adjust size limit dynamically
+function adjustSizeLimit() {
+    const maxBars = calculateMaxBars();
+
+    inputSize.max = maxBars; // Set the maximum value of the slider dynamically
+
+    // Adjust value if it exceeds new max
+    if (inputSize.value > maxBars) inputSize.value = maxBars;
+}
+
+// Function to calculate maximum number of bars that can fit in the canvas
+function calculateMaxBars() {
+    const canvasWidth = canvas.offsetWidth; // Get the canvas width dynamically
+
+    const barWidth = 18; // Minimum width of each bar (in px)
+    const barSpacing = 2; // Space between bars (in px)
+
+    // Calculate maximum number of bars that can fit in the canvas
+    const maxBars = Math.floor(canvasWidth / (barWidth + barSpacing));
+
+    return maxBars;
+}
 
 // disable inputs while algorithm is running
 function disable() {

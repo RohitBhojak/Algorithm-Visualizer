@@ -14,11 +14,9 @@ function insertionSort() {
             color: "green",
         });
         
-        // Move elements of copy[0..i-1] that are greater than key
         while (j >= 0 && copy[j] > key) {
 
-            // Enqueue comparison operation works when both conditions are true, i.e. for swappable elements
-            //swappable elements turn yellow otherwise remains defaulColored
+            // Enqueue comparison operation works when both conditions are true
             addOperation({
                 type: "compare",
                 indices: [j, j + 1],
@@ -33,7 +31,7 @@ function insertionSort() {
                 indices: [j, j + 1],
             });
 
-            // Enqueue update operation to reset the color to
+            // Keep the sorted elements green
             addOperation({
                 type: "update",
                 indices: [j + 1],
@@ -42,7 +40,7 @@ function insertionSort() {
             j--;
         }
 
-        //otherwise the last elements will be left yellow
+        //Mark the current element as sorted
         addOperation({
             type: "update",
             indices: [j + 1],

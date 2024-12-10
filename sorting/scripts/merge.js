@@ -1,126 +1,90 @@
-function mergeSort(startIndex, endIndex) {
-    // Base condition: return when the segment has only one element
-    if (startIndex >= endIndex) return;
+function mergeSort() {
 
-    const midIndex = Math.floor((startIndex + endIndex) / 2);
-
-    // Recursively sort the left half
-    mergeSort(startIndex, midIndex);
-
-    // Recursively sort the right half
-    mergeSort(midIndex + 1, endIndex);
-
-    // Merge the two sorted halves
-    merge(startIndex, midIndex, endIndex);
-
-    // Reset the boundary colors after merging
-    addOperation({
-        type: "update",
-        indices: [startIndex, endIndex],
-    });
-}
-
-function merge(startIndex, midIndex, endIndex) {
-    const left = [];
-    const right = [];
-    // Mark the current segment's boundaries as red
-    addOperation({
-        type: "update",
-        indices: [startIndex, endIndex],
-        color: "red",
-    });
-    // bar_height the left and right halves
-    for (let i = startIndex; i <= midIndex; i++) {
-        left.push(bar_height[i]);
-    }
-    for (let i = midIndex + 1; i <= endIndex; i++) {
-        right.push(bar_height[i]);
-    }
-
-    let i = 0, j = 0, k = startIndex;
-
-    // Merge the left and right halves
-    while (i < left.length && j < right.length) {
-        // Highlight the elements being compared as yellow
-        addOperation({
-            type: "update",
-            indices: [k],
-            color: "yellow",
+    function merge(arr, start, mid, end){
+        // Highlight partitions before merging
+        addOperation({ 
+            type: "update", 
+            indices: generateIndices(start, end),
+            color: red
         });
 
-        if (left[i] <= right[j]) {
-            bar_height[k] = left[i];
+        let merged = [];
+        let i = start, j = mid + 1;
+
+        while (i <= mid && j <= end) {
+            addOperation({ 
+                type: "compare", 
+                indices: [i, j]
+            });
+
+            // Highlight elements being merged
+            if (arr[i] <= arr[j]) {
+                addOperation({ 
+                    type: "update", 
+                    indices: [i],
+                    color: orange
+                });
+                merged.push(arr[i]);
+                i++;
+            } else {
+                addOperation({ 
+                    type: "update", 
+                    indices: [j],
+                    color: orange
+                });
+                merged.push(arr[j]);
+                j++;
+            }
+        }
+        while (i <= mid) {
+            addOperation({ 
+                type: "update", 
+                indices: [i],
+                color: orange
+            });
+            merged.push(arr[i]);
             i++;
-        } else {
-            bar_height[k] = right[j];
+        }
+        while (j <= end) {
+            addOperation({ 
+                type: "update", 
+                indices: [j],
+                color: orange
+            });
+            merged.push(arr[j]);
             j++;
         }
 
-        // Update the height of the bar and mark it as sorted (green)
-        addOperation({
-            type: "update",
-            indices: [k],
-            color: "green",
-        });
-
-        // Update the height in the DOM
-        addOperation({
-            type: "swap",
-            indices: [k, k], // Visualizes height update
-        });
-
-        k++;
+        // Update original array with merged result
+        for (let k = 0; k < merged.length; k++) {
+            addOperation({ 
+                type: "update", 
+                indices: [start + k], 
+                newHeight: merged[k],
+                color: "green"
+            });
+            arr[start + k] = merged[k];
+        }
     }
 
-    // bar_height the remaining elements of the left array
-    while (i < left.length) {
-        addOperation({
-            type: "update",
-            indices: [k],
-            color: "yellow",
-        });
-
-        bar_height[k] = left[i];
-        i++;
-
-        addOperation({
-            type: "update",
-            indices: [k],
-            color: "green",
-        });
-
-        addOperation({
-            type: "swap",
-            indices: [k, k],
-        });
-
-        k++;
+    function recursiveSort(arr, start, end) {
+        if (start < end) {
+        const mid = Math.floor((start + end) / 2);
+         recursiveSort(arr, start, mid);
+        recursiveSort(arr, mid + 1, end);
+        return merge(arr, start, mid, end);
+        }
     }
 
-    // bar_height the remaining elements of the right array
-    while (j < right.length) {
-        addOperation({
-            type: "update",
-            indices: [k],
-            color: "yellow",
-        });
-
-        bar_height[k] = right[j];
-        j++;
-
-        addOperation({
-            type: "update",
-            indices: [k],
-            color: "green",
-        });
-
-        addOperation({
-            type: "swap",
-            indices: [k, k],
-        });
-
-        k++;
+    function generateIndices(start, end) {
+        const indices = [];
+        for (let i = start; i <= end; i++) {
+            indices.push(i);
+        }
+        return indices;
     }
-    // Start the animation process after all operations are queued
+
+    const arr = [...bar_height];
+    recursiveSort(arr, 0, arr.length - 1);
     startAnimation();
 }

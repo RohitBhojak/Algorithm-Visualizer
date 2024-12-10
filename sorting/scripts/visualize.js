@@ -3,12 +3,14 @@ let operationsQueue = [];
 let currentFrame = 0;
 let isPlaying = false; // track play/pause state
 let frameID = null; // variable to store the requestAnimationFrame ID
-let speedDelay = 500; // Default speed delay
+let speedDelay = 600; // Default speed delay
 let defaultColor = getComputedStyle(document.documentElement).getPropertyValue('--bar-color'); // Get default bar color
-const speedArr = [500, 400, 300, 200, 100, 10];
+const speedArr = [1000, 800, 600, 400, 200, 10];
 
 // colors
 const yellow = "#f8d000";
+const orange = "#ff9f00";
+const red = "#b22222";
 
 // Update speedDelay dynamically
 const speedInput = document.querySelector("#speed");
@@ -32,7 +34,7 @@ document.querySelector("#sort").addEventListener("click", () => {
                 selectionSort();
                 break;
             case "merge":
-                mergeSort( 0, bar_height.length - 1);
+                mergeSort();
                 break;
             case "quick":
                 quickSort();
@@ -107,7 +109,7 @@ function completeAnimation(color = "green") {
 
 // Function to process a single operation
 function processOperation(operation) {
-    const { type, indices, color } = operation;
+    const { type, indices, color, newHeight } = operation;
     switch (type) {
         case "compare":
             bar[indices[0]].style.backgroundColor = yellow;
@@ -121,6 +123,11 @@ function processOperation(operation) {
             bar[indices[1]].innerText = bar_height[indices[1]];
             break;
         case "update":
+            if (newHeight !== undefined) {
+                bar_height[indices[0]] = newHeight;
+                bar[indices[0]].style.height = newHeight + "%";
+                bar[indices[0]].innerText = newHeight;
+            }
             indices.forEach(index => {
                 bar[index].style.backgroundColor = color || defaultColor;
             });
