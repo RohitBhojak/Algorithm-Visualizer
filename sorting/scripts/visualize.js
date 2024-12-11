@@ -6,6 +6,7 @@ let frameID = null; // variable to store the requestAnimationFrame ID
 let speedDelay = 600; // Default speed delay
 let defaultColor = getComputedStyle(document.documentElement).getPropertyValue('--bar-color'); // Get default bar color
 const speedArr = [1000, 800, 600, 400, 200, 10];
+const sort = document.querySelector("#sort");
 
 // colors
 const yellow = "#f8d000";
@@ -19,7 +20,7 @@ speedInput.addEventListener("input", () => {
 });
 
 // Sort button event listener
-document.querySelector("#sort").addEventListener("click", () => {
+sort.addEventListener("click", () => {
     if (isPlaying) {
         pauseAnimation();
     } else {
@@ -74,21 +75,21 @@ function startAnimation() {
     disable();
     isPlaying = true;
     frameID = requestAnimationFrame(renderFrame);
-    document.querySelector("#sort").innerText = "Pause";
+    sort.innerText = "Pause";
 }
 
 function pauseAnimation() {
     enable();
     isPlaying = false;
     cancelAnimationFrame(frameID);
-    document.querySelector("#sort").innerText = "Resume";
+    sort.innerText = "Resume";
 }
 
 function resumeAnimation() {
     disable();
     isPlaying = true;
     frameID = requestAnimationFrame(renderFrame);
-    document.querySelector("#sort").innerText = "Pause";
+    sort.innerText = "Pause";
 }
 
 function resetAnimation() {
@@ -98,7 +99,7 @@ function resetAnimation() {
     operationsQueue = [];
     frameID = null;
     cancelAnimationFrame(frameID);
-    document.querySelector("#sort").innerText = "Start";
+    sort.innerText = "Start";
 }
 
 function completeAnimation(color = "green") {
