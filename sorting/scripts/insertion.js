@@ -1,4 +1,3 @@
-//I honestly don't know how this works
 function insertionSort() {
     const n = bar_height.length;
     let copy = [...bar_height]; 
