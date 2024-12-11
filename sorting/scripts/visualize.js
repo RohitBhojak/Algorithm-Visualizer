@@ -23,7 +23,7 @@ speedInput.addEventListener("input", () => {
 sort.addEventListener("click", () => {
     if (isPlaying) {
         pauseAnimation();
-    } else {
+    } else if (sort.innerText == "Start") {
         switch (document.querySelector("#algorithm").value) {
             case "bubble":
                 bubbleSort();
@@ -44,6 +44,8 @@ sort.addEventListener("click", () => {
                 heapSort();
                 break;
         }
+    } else if (sort.innerText == "Resume") {
+        resumeAnimation();
     }
 });
 
@@ -59,6 +61,7 @@ function renderFrame() {
     if (currentFrame < operationsQueue.length && isPlaying) {
         const operation = operationsQueue[currentFrame];
         processOperation(operation);
+        console.log(operationsQueue.length);
         currentFrame++;
 
         // Schedule the next frame with dynamic delay
