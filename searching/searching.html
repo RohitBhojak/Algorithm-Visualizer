@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./searching.css">
+    <title>Searching Visualizer</title>
+</head>
+
+<body>
+
+    <div class="left">
+        <div class="logo">Algorithm Visualizer</div>
+        <select name="algorithm" id="algorithm">
+            <option value="linear">Linear Search</option>
+            <option value="binary">Binary Search</option>
+        </select>
+        <div class="tab">
+            <div class="tab-buttons">
+                <button class="tablinks" onclick="openTab(event, 'pseudocode')">Pseudocode</button>
+                <button class="tablinks" onclick="openTab(event, 'complexities')">Complexities</button>
+            </div>
+            <div class="content">
+                <div id="pseudocode" class="tabcontent">
+                </div>
+                <div id="complexities" class="tabcontent">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="right-nav">
+            <div class="controls">
+                <div class="usr-input">
+                    <label for="search">Search</label>
+                    <input type="text" name="search" id="search">
+                </div>
+
+                <div class="usr-input">
+                    <label for="speed">Speed</label>
+                    <input type="range" name="speed" id="speed" min="0" max="5" value="2">
+                </div>
+                <button id="generate">Randomize</button>
+            </div>
+            <button id="start">Start</button>
+        </div>
+        <div class="canvas"></div>
+    </div>
+
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/tab-script.js"></script>
+    <script src="./scripts/visualize.js"></script>
+    <script src="./scripts/searching.js"></script>
+    <script src="./scripts/binary.js"></script>
+
+</body>
+
+</html>
