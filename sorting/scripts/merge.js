@@ -70,7 +70,7 @@ function mergeSort() {
     function recursiveSort(arr, start, end) {
         if (start < end) {
         const mid = Math.floor((start + end) / 2);
-         recursiveSort(arr, start, mid);
+        recursiveSort(arr, start, mid);
         recursiveSort(arr, mid + 1, end);
         return merge(arr, start, mid, end);
         }
