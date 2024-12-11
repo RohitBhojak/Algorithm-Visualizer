@@ -143,6 +143,7 @@ pre {
 /* Adding padding to complexity list */
 ul {
     padding: 0px 24px;
+    margin-bottom: 16px;
 }
 
 /* Improved Keyframe */
