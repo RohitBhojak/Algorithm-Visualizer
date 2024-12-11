@@ -1,10 +1,4 @@
 function quickSort() {
-    operationsQueue = [];
-    currentFrame = 0;
-
-    const red = "red";
-    const orange = "orange";
-    const yellow = "yellow";
 
     function partition(arr, start, end) {
         const pivot = arr[start];
