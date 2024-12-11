@@ -6,7 +6,7 @@ let frameID = null; // variable to store the requestAnimationFrame ID
 let speedDelay = 600; // Default speed delay
 let defaultColor = getComputedStyle(document.documentElement).getPropertyValue('--bar-color'); // Get default bar color
 const speedArr = [1000, 800, 600, 400, 200, 10];
-const sort = document.querySelector("#sort");
+const sort = document.querySelector("#start");
 
 // colors
 const yellow = "#f8d000";
