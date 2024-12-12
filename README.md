@@ -16,13 +16,6 @@ The **Algorithm Visualizer** is an interactive tool to understand sorting and se
 - Algorithms: Linear and Binary Search.
 - Features: Dynamic array generation, adjustable speed, and step-by-step search highlights.
 
-## Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-repo/algorithm-visualizer.git
-   ```
-2. Open `index.html` in your browser.
-
 ## Usage
 1. Navigate to Sorting or Searching from the homepage.
 2. Select an algorithm, configure options, and start the visualization.

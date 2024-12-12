@@ -26,6 +26,7 @@
     border: 1px solid black;
     font-size: 20px;
     position: relative; /* To position the index on top */
+    transition: background-color 0.3s;
 }
 
 /* Styling for the index on top of the box */

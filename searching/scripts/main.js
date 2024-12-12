@@ -61,6 +61,7 @@ function maxLength() {
 function generateArray() {
     box_value = []; // Reset values
     resetColor();
+    if (frameID) resetAnimation();
 
     // Generate random, unique values
     while (box_value.length < box.length) {
