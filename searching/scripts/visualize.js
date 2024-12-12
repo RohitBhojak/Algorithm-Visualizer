@@ -37,6 +37,13 @@ start.addEventListener("click", () => {
     }
 });
 
+// Enter key event listener
+search.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        start.click();
+    }
+});
+
 // Functions
 
 // Add operation to queue
