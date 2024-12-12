@@ -113,6 +113,10 @@ body {
     margin-left: 20px;
 }
 
+.fa-github {
+    color: white;
+}
+
 /* Hover effect for GitHub icon */
 .github:hover {
     transform: scale(1.2); /* Slight scale on hover */
