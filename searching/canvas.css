@@ -10,12 +10,12 @@
     border: 1px solid var(--dark-blue);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     padding: 5% 20px;
-    grid-template-columns: repeat(auto-fill, 100px); /* Dynamic grid with 100px boxes */
+    grid-template-columns: repeat(auto-fill, 80px); /* Dynamic grid with 80px boxes */
 }
 
 /* Styling for each array box */
 .canvas .box {
-    width: 100px;
+    width: 80px;
     height: 70px;
     background-color: var(--bar-color);
     display: flex;

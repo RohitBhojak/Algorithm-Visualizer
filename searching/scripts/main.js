@@ -5,7 +5,6 @@ let box_value = [];
 
 const generateButton = document.querySelector("#generate");
 const algorithm = document.querySelector("#algorithm");
-const inputSpeed = document.querySelector("#speed");
 const search = document.querySelector("#search");
 
 // Event listeners
@@ -27,6 +26,12 @@ generateButton.addEventListener("click", () => {
     generateArray();
 })
 
+// Reset color on algorithm change
+algorithm.addEventListener("input", () => {
+    resetColor();
+    resetAnimation();
+})
+
 // Functions
 
 // Create div elements inside the canvas
@@ -46,7 +51,7 @@ function createDivs(size) {
 
 // Calculate the maximum number of boxes that fit within the canvas
 function maxLength() {
-    const boxWidth = 100; // Width of each box
+    const boxWidth = 80; // Width of each box
     const canvasWidth = canvas.offsetWidth - 40; // Width of the canvas without padding
     const numColumns = Math.floor(canvasWidth / boxWidth);
     return numColumns * 4; // 4 rows
@@ -55,6 +60,7 @@ function maxLength() {
 // Generate a random array and assign values to the boxes with animation
 function generateArray() {
     box_value = []; // Reset values
+    resetColor();
 
     // Generate random, unique values
     while (box_value.length < box.length) {
