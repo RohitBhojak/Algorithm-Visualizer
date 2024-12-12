@@ -143,6 +143,11 @@ body {
     overflow: hidden;
 }
 
+.profile-photo{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
 /* Media Query for Smaller Screens (max-width: 480px) */
 @media (max-width: 480px) {
 
