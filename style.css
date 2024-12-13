@@ -151,6 +151,11 @@ body {
     height: 50px;
     width: 50px;
     border-radius: 50%;
+    transition: transform 0.3s ease; /* Smooth animation */
+}
+
+.profile-photo:hover {
+    transform: scale(1.2); /* Scale up by 20% */
 }
 /* Media Query for Smaller Screens (max-width: 480px) */
 @media (max-width: 480px) {
