@@ -28,13 +28,15 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    align-items: center; /* Center horizontally */
+    height: 100%;
 }
 
 /* Logo Styles */
 .logo {
     margin-top: 125px;
-    margin-bottom: 25px;
+    /* margin-bottom: 15px; */
     font-size: xx-large;
 }
 
@@ -43,7 +45,7 @@ body {
     width: 50vw;
     margin: 2px auto;
     color: white;
-    font-size: 16px;
+    font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
